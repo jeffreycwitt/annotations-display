@@ -1,0 +1,310 @@
+<html>
+  <head>
+    <head>
+      <!-- <link rel="stylesheet" href="reveal/dist/theme/white.css"> -->
+      <!-- <link rel="stylesheet" href="reveal/dist/reveal.css"> -->
+      <!-- <script src="reveal/dist/reveal.js"></script> -->
+
+      <!-- <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+      
+      
+      
+    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://musclesoft.github.io/jquery-connections/jquery.connections.js"></script>
+    <style>
+      .container{
+        display: flex;
+        justify-content: space-around;
+        height: 100%;
+        overflow: hidden;
+      }
+      .context{
+        border-left: 1px dotted black;
+        padding-left: 10px;
+        margin-left: 10px;
+      }
+      .overlay{
+        background-color: blue;
+        opacity: 0.2;
+      }
+      connection {
+        border: 10px solid #b51c29;
+        border-radius: 50px;
+        
+      }
+      .thumbnail{
+        z-index: 1;
+      }
+      .comment {
+        background-color: lightblue;
+        /* border: 10px solid lightblue; */
+        /* border-radius: 50px; */
+        padding: 10px;
+        width: 180px;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="slides">
+        <div>
+          <h1>Tour of Nashville</h1>
+        </div>
+        <div id="park">
+          <div>
+          <h2>Parks</h2>
+          </div>
+        </div>
+        <div id="street">
+          <div>
+          <h2>Streets</h2>
+          </div>
+        </div>
+        <div id="river">
+          <div>
+          <h2>Rivers</h2>
+          </div>
+        </div>
+        <div id="other">
+          <div>
+          <h2>Other</h2>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <script>
+      const annoLists= [
+        "https://dev.gdmrdigital.com/annotations/1240244679/115716683931790580649/f3388cbfb8016dc9bf1bb5c25cf9df2a.json",
+        "https://dev.gdmrdigital.com/annotations/1240244679/115716683931790580649/e648552946594b5cb920eb01d4523a7b.json",
+        "https://dev.gdmrdigital.com/annotations/1240244679/115716683931790580649/63d8b1893f713b025c71481b361c2a44.json",
+        "https://dev.gdmrdigital.com/annotations/1240244679/115716683931790580649/cedcd67b92bcd520184ebf2da639e6cb.json"
+        
+      ]
+      // const manifests = [
+      // "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~26902~1100201/manifest",
+      // "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~273811~90047347/manifest",
+      // "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~310514~90080184/manifest"
+      // ]
+      manifests = {
+        "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~26902~1100201/manifest": {
+          "@id": "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~26902~1100201/canvas/c1",
+          "@type": "sc:Canvas",
+          "label": "Battle-field, Nashville, Tenn.",
+          "description": "",
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://www.davidrumsey.com/luna/servlet/iiif/RUMSEY~8~1~26902~1100201/full/!1024,1024/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://www.davidrumsey.com/luna/servlet/iiif/RUMSEY~8~1~26902~1100201",
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 12000,
+                "height": 6925
+              },
+              "on": "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~26902~1100201/canvas/c1"
+            }
+          ],
+          "width": 12000,
+          "height": 6925
+        },
+        "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~273811~90047347/manifest": {
+          "@id": "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~273811~90047347/canvas/c1",
+          "@type": "sc:Canvas",
+          "label": "Nashville",
+          "description": "",
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://www.davidrumsey.com/luna/servlet/iiif/RUMSEY~8~1~273811~90047347/full/!1024,1024/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://www.davidrumsey.com/luna/servlet/iiif/RUMSEY~8~1~273811~90047347",
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 5442,
+                "height": 6423
+              },
+              "on": "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~273811~90047347/canvas/c1"
+            }
+          ],
+          "width": 5442,
+          "height": 6423
+        },
+        "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~310514~90080184/manifest": {
+          "@id": "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~310514~90080184/canvas/c1",
+          "@type": "sc:Canvas",
+          "label": "Nashville (Tennessee).",
+          "description": "",
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://www.davidrumsey.com/luna/servlet/iiif/RUMSEY~8~1~310514~90080184/full/!1024,1024/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://www.davidrumsey.com/luna/servlet/iiif/RUMSEY~8~1~310514~90080184",
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 11303,
+                "height": 7509
+              },
+              "on": "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~310514~90080184/canvas/c1"
+            }
+          ],
+          "width": 11303,
+          "height": 7509
+        },
+        "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~26953~1100252/manifest":
+        {
+          "@id": "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~26953~1100252/canvas/c1",
+          "@type": "sc:Canvas",
+          "label": "Nashville, Tenn.",
+          "description": "",
+          "images": [
+            {
+              "@type": "oa:Annotation",
+              "motivation": "sc:painting",
+              "resource": {
+                "@id": "https://www.davidrumsey.com/luna/servlet/iiif/RUMSEY~8~1~26953~1100252/full/!1024,1024/0/default.jpg",
+                "@type": "dctypes:Image",
+                "service": {
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://www.davidrumsey.com/luna/servlet/iiif/RUMSEY~8~1~26953~1100252",
+                  "profile": "http://iiif.io/api/image/2/level1.json",
+                  "protocol": "http://iiif.io/api/image"
+                },
+                "format": "image/jpeg",
+                "width": 12000,
+                "height": 6925
+              },
+              "on": "https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~26953~1100252/canvas/c1"
+            }
+          ],
+          "width": 12000,
+          "height": 6925
+        }
+      }
+
+      $(document).ready(function(){
+        
+
+        annoLists.forEach((l, idx1) => {
+          $.get(l, function(d){
+            const resources = d.resources
+            resources.forEach((r, idx2) => {
+              console.log("r", r)
+              const comment = r.resource[0].chars
+              console.log("comment", comment)
+              const canvas = r.on[0].full
+              const coordinates = r.on[0].selector.default.value
+              const murl = r.on[0].within["@id"]
+              const manifest = manifests[murl]
+              const idx1idx2 = idx1 + "-" + idx2
+              if (manifest){
+                appendImage(manifest, canvas, coordinates, comment, idx1idx2)
+              }
+          })
+        })
+
+          function appendImage(m, c, coords, comment, idx) {
+            const canvas = m
+            console.log("canvas", canvas)
+            const connectedClass = "connected-" + idx
+            const imgurl = canvas.images[0].resource.service["@id"]
+            const imgwidth = parseInt(canvas.width)
+            const imgheight = parseInt(canvas.height)
+            console.log("imgwidth", imgwidth)
+            const coordssplit = coords.split("=")[1]
+            const x = parseInt(coordssplit.split(",")[0])
+            const y = parseInt(coordssplit.split(",")[1])
+            const w = parseInt(coordssplit.split(",")[2])
+            const h = parseInt(coordssplit.split(",")[3])
+            const newx = (1000 * x) / imgwidth
+            const newy = (1000 * y) / imgwidth
+            const neww = (1000 * w) / imgwidth
+            const newh = (1000 * h) / imgwidth
+            const newfullHeight = (1000 * imgheight) / imgwidth
+            const newcoords = newx + "," + newy + "," + neww + "," + newh 
+            const smallimgurl = imgurl + "/" + coordssplit + "/full/0/default.jpg"
+            const contextimgurl = imgurl + "/" + newcoords + "/full/0/default.jpg"
+            const fullimgurl = imgurl + "/full/1000,/0/default.jpg"
+            let category = "other";
+            if (comment.includes("park")){
+              category = "park"
+            }
+            else if (comment.includes("river")){
+              category = "river"
+            }
+            else if (comment.includes("street")){
+              category = "street"
+            }
+            htmlstring = [
+            "<div>",
+              "<div class='container'>", 
+              "<div class='thumbnail' style='width: 250px; font-size: 16px;'>", 
+                "<div id='" + connectedClass + "-source'></div>",
+                "<a href='" + fullimgurl + "' target='_blank'>",
+                  "<img width='200px' src='" + smallimgurl + "'/>", 
+                "</a>", 
+                "<br/>", 
+                "<div class='comment'>" + comment + "</div>",
+              "</div>",
+              "<div class='context' style='width: 1000px; position: relative; background-image: url(" + fullimgurl + "); height: " + newfullHeight + ";'>",
+                "<div id='" + connectedClass + "-target' class='overlay' style='position: absolute; left:" + newx + "; top:" + newy + "; width:" + neww + "; height:" + newh + ";'>",
+                "</div>", 
+              "</div>", 
+            "</div>",
+            "<br/>",
+            "<hr/>",
+            "<br/>",
+            "</div>",
+            ]
+            $("div#" + category).append(htmlstring.join(""))
+              .ready(function(){ 
+                console.log("test", $("#" + connectedClass + "-source"))
+                setTimeout(function() {
+                  $("#" + connectedClass + "-source, #" + connectedClass + "-target").connections();
+                }, 1000);
+                // $("#" + connectedClass + "-source, #" + connectedClass + "-target").connections();
+                
+              })
+              
+
+
+          }
+          
+
+        })
+        
+        
+
+        
+        
+      });
+
+    </script>
+    
+    <script>
+      
+    </script>
+  </body>
+</html>
